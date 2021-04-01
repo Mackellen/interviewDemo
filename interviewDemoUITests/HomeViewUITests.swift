@@ -2,7 +2,7 @@
 //  HomeViewUITests.swift
 //  interviewDemoUITests
 //
-//  Created by wang fei on 2020/9/27.
+//  Created by Mackellen on 2020/9/27.
 //  Copyright © 2020 mackellen. All rights reserved.
 //
 

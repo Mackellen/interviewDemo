@@ -2,36 +2,21 @@
 //  HistoryModel.swift
 //  interviewDemo
 //
-//  Created by wang fei on 2020/9/26.
+//  Created by Mackellen on 2020/9/26.
 //  Copyright © 2020 mackellen. All rights reserved.
 //
 
 import UIKit
+import Realm
+import RealmSwift
 
-
-fileprivate struct Metric {
-    static let date : String = "HistoryModel_date"
-    static let data : String = "HistoryModel_data"
-}
-
-class HistoryModel: NSObject,NSCoding {
-
-    var date: String?
-    var data: HomeModel?
+class HistoryModel: Object {
+    @objc dynamic var id = 0
+    @objc dynamic var date: String?
+    @objc dynamic var data: HomeModel?
     
-    required init?(coder: NSCoder) {
-        date = coder.decodeObject(forKey: Metric.date) as? String
-        data = coder.decodeObject(forKey: Metric.data) as? HomeModel
-    }
-    
-    func encode(with coder: NSCoder) {
-        coder.encode(date, forKey: Metric.date)
-        coder.encode(data, forKey: Metric.data)
-    }
-    
-    required init?(map: Dictionary<String,Any>) {
-        date = map["date"] as? String
-        data = map["data"] as? HomeModel
+    override static func primaryKey() -> String? {
+        return "id"
     }
     
 }

@@ -31,6 +31,7 @@
 		7B4B7C7B251F943700304E18 /* Dictionary+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B7C7A251F943700304E18 /* Dictionary+Category.swift */; };
 		7B4B7C81252063B400304E18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B4B7B9A251C3FEF00304E18 /* Assets.xcassets */; };
 		7B4B7C872520658700304E18 /* HomeViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B7C862520658700304E18 /* HomeViewUITests.swift */; };
+		7BBD113D2538A5D100AAA178 /* MKDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBD113C2538A5D100AAA178 /* MKDecoder.swift */; };
 		D638EA2CB3A9DF45041A794A /* Pods_interviewDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF47E2A82DE3FF7F46E33EB /* Pods_interviewDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		7B4B7C78251F864A00304E18 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		7B4B7C7A251F943700304E18 /* Dictionary+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Category.swift"; sourceTree = "<group>"; };
 		7B4B7C862520658700304E18 /* HomeViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewUITests.swift; sourceTree = "<group>"; };
+		7BBD113C2538A5D100AAA178 /* MKDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKDecoder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,10 +156,10 @@
 		7B4B7B90251C3FEE00304E18 /* interviewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				7B4B7BC1251C5B4500304E18 /* ApiNetwork */,
 				7B4B7BE7251E2DD200304E18 /* Commons */,
 				7B4B7BDA251DBEF400304E18 /* Category */,
 				7B4B7BC6251CA3AF00304E18 /* Home */,
-				7B4B7BC1251C5B4500304E18 /* ApiNetwork */,
 				7B4B7B91251C3FEE00304E18 /* AppDelegate.swift */,
 				7B4B7B95251C3FEE00304E18 /* ViewController.swift */,
 				7B4B7B97251C3FEE00304E18 /* Main.storyboard */,
@@ -191,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				7B4B7BC2251C652900304E18 /* ApiManager.swift */,
+				7BBD113C2538A5D100AAA178 /* MKDecoder.swift */,
 			);
 			path = ApiNetwork;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				7B4B7B96251C3FEE00304E18 /* ViewController.swift in Sources */,
 				7B4B7BE6251E078200304E18 /* HistoryViewCell.swift in Sources */,
 				7B4B7BEC251E4C6900304E18 /* HistoryViewModel.swift in Sources */,
+				7BBD113D2538A5D100AAA178 /* MKDecoder.swift in Sources */,
 				7B4B7C75251EF49600304E18 /* HistoryModel.swift in Sources */,
 				7B4B7C77251F0DA900304E18 /* ConstantUtil.swift in Sources */,
 				7B4B7B92251C3FEE00304E18 /* AppDelegate.swift in Sources */,

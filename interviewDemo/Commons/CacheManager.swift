@@ -2,7 +2,7 @@
 //  RealmManager.swift
 //  interviewDemo
 //
-//  Created by wang fei on 2020/9/25.
+//  Created by Mackellen on 2020/9/25.
 //  Copyright © 2020 mackellen. All rights reserved.
 //
 
@@ -16,7 +16,7 @@ class CacheManager: NSObject {
     
     func createPath(fileName:String) -> String{
         let fileManager = FileManager.default
-        let localPath  = NSHomeDirectory()+"/Documents/\(fileName).data"
+        let localPath  = NSHomeDirectory()+"/Documents/\(fileName)"
         if !self.isExistedWithPath(filePath: localPath) {
             fileManager.createFile(atPath: localPath, contents: nil, attributes: nil)
         }
@@ -46,9 +46,9 @@ class CacheManager: NSObject {
     func getDataWithPath(path: String) -> Array<Dictionary<String,Any>>{
         let array:NSArray = NSArray(contentsOfFile: path) ?? []
         if array.isKind(of: NSArray.self), array.count > 0 {
-            return array as! Array<Dictionary<String, Any>>
+            return array as! [[String: Any]]
         }
-        return Array<Dictionary<String,Any>>()
+        return Array<[String: Any]>()
     }
     
     
