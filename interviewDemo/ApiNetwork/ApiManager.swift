@@ -2,7 +2,7 @@
 //  ApiManager.swift
 //  interviewDemo
 //
-//  Created by wang fei on 2020/9/24.
+//  Created by Mackellen on 2020/9/24.
 //  Copyright © 2020 mackellen. All rights reserved.
 //
 
@@ -20,6 +20,9 @@ enum baseURLPath:String{
       case online = "https://api.github.com/"
 }
 
+struct ResponseData<T: Decodable>: Decodable {
+    var data: T?
+}
 
 class ApiManager: NSObject {
 
@@ -39,8 +42,8 @@ class ApiManager: NSObject {
     }
     
     // MARK: Get Method
-       public func get(url: String, parameter: [String: Any]?) -> Observable<Dictionary<String, Any>> {
-           return Observable<Dictionary<String, Any>>.create { [weak self] (observer) -> Disposable in
+    public func get(url: String, parameter: [String: Any]?) -> Observable<[String: Any]> {
+           return Observable<[String: Any]>.create { [weak self] (observer) -> Disposable in
             let allURL = self?.apiBaseURL(path: url)
             Alamofire.request(allURL!, method: .get,parameters: parameter,encoding: URLEncoding.default,headers: self?.headers)
                    .responseJSON { (respose) in
@@ -65,8 +68,8 @@ class ApiManager: NSObject {
        
        
        // MARK: Post Method
-       public func post(url: String, parameter: [String: Any]?) -> Observable<Dictionary<String, Any>> {
-           return Observable<Dictionary<String, Any>>.create {[weak self] (observer) -> Disposable in
+       public func post(url: String, parameter: [String: Any]?) -> Observable<[String: Any]> {
+           return Observable<[String: Any]>.create {[weak self] (observer) -> Disposable in
             let allURL = self?.apiBaseURL(path: url)
             Alamofire.request(allURL!, method: .post,parameters: parameter,encoding: URLEncoding.default,headers: self?.headers)
                        .responseJSON { (respose) in
@@ -91,7 +94,7 @@ class ApiManager: NSObject {
 }
 
 extension ApiManager {
-   class func requestData(type: String?, path:String?,params:[String: Any]?) -> Observable<Dictionary<String, Any>> {
+   class func requestData(type: String?, path:String?, params:[String: Any]?) -> Observable<[String: Any]> {
         if type?.lowercased() == "get" {
             return ApiManager.shared.get(url: path ?? "", parameter: params)
         }else{

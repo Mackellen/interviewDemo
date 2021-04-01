@@ -2,7 +2,7 @@
 //  HistoryViewCell.swift
 //  interviewDemo
 //
-//  Created by wang fei on 2020/9/25.
+//  Created by Mackellen on 2020/9/25.
 //  Copyright © 2020 mackellen. All rights reserved.
 //
 
@@ -42,7 +42,10 @@ class HistoryViewCell: UITableViewCell {
         }
     }
     
-    func setDataSource(_ model: HistoryModel){
+    func setDataSource(_ model: HistoryModel, _ index: Int){
+        if index == 0 {
+            titleLabel.textColor = UIColor.red
+        }
         titleLabel.text = "请求时间：" + model.date!
     }
     

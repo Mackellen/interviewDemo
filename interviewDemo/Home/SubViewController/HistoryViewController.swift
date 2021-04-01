@@ -2,13 +2,14 @@
 //  HistoryViewController.swift
 //  interviewDemo
 //
-//  Created by wang fei on 2020/9/25.
+//  Created by Mackellen on 2020/9/25.
 //  Copyright © 2020 mackellen. All rights reserved.
 //
 
 import UIKit
 import Toast_Swift
 import RxSwift
+import RxCocoa
 import MJRefresh
 
 
@@ -16,33 +17,32 @@ class HistoryViewController: UIViewController {
 
     private var tableView: UITableView!
     var refreshHeader: MJRefreshHeader!
-    
     private  let viewModel = HistoryViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        initUI()
-        
+        setupSubviews()
         viewModel.getData()
-        viewModel.refrenshBlock = {[weak self] (count) in
+        viewModel.refrenshBlock = {[weak self] _ in
             self?.tableView.mj_header?.endRefreshing()
             self?.tableView.reloadData()
         }
 
-        NotificationCenter.default.addObserver(self, selector: #selector(receiveMsg), name: NSNotification.Name(rawValue: kListenForMessages), object: nil)
-        
+        NotificationCenter.default.rx.notification(Notification.Name(rawValue: kListenForMessages)).subscribe(onNext: {[weak self] (notific) in
+            guard let self = self else {return}
+            self.receiveMsg(notific: notific)
+        }).disposed(by: rx.disposeBag)
         // Do any additional setup after loading the view.
     }
     
-    private func initUI() {
+    private func setupSubviews() {
         self.title = "历史记录"
         
         let item = UIBarButtonItem(image: UIImage(named: "back-icon"), style: .done, target: nil, action: nil)
         item.rx.tap.do(onNext:{ [weak self] () in
             self?.navigationController?.popViewController(animated: true)
         }).subscribe().disposed(by: rx.disposeBag)
-        
         self.navigationItem.leftBarButtonItem = item
         
         
@@ -64,7 +64,7 @@ class HistoryViewController: UIViewController {
         
     }
     
-    @objc func receiveMsg(notific:Notification){
+    func receiveMsg(notific:Notification){
         self.view.makeToast("有新的内容哦!",duration:2,position:.center)
     }
     
