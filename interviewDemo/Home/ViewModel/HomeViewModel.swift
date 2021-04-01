@@ -69,7 +69,7 @@ class HomeViewModel: NSObject {
                 cell.setDataSoure(key: element.key, value: "\(element.value ?? "")")
                 self.dataArray.append(cell)
             }
-            isFirstLoad = false
+            isFirstLoad = true
             self.refrenshBlock?(historyTask.count)
             return
         }
@@ -105,7 +105,7 @@ class HomeViewModel: NSObject {
                         }
                         self.refrenshBlock?(historyTemp.count+1)
                     }
-                    self.isFirstLoad = false
+                    self.isFirstLoad = true
                 }
          }.disposed(by: rx.disposeBag)
     }
